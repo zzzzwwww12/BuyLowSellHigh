@@ -42,7 +42,7 @@ public class HuobiAPIGeneral {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			HistoryDetails details = restTemplate.getForObject(
-					HISTORY_PREFIX + BTC + HISTORY_MIDDLE + _1_MINUTE + HISTORY_SUFFIX + RECORD_COUNT + "1", HistoryDetails.class);
+					HISTORY_PREFIX + BTC + HISTORY_MIDDLE + _1_MINUTE + HISTORY_SUFFIX + RECORD_COUNT + "1" + "?Content-Type:application/json", HistoryDetails.class);
 			log.info(details.toString());
 		};
 	}
