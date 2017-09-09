@@ -3,13 +3,6 @@
  */
 package com.coin.arbitrage.huobi;
 
-import static com.coin.arbitrage.huobi.util.HuobiConstants.BTC;
-import static com.coin.arbitrage.huobi.util.HuobiConstants.HISTORY_MIDDLE;
-import static com.coin.arbitrage.huobi.util.HuobiConstants.HISTORY_PREFIX;
-import static com.coin.arbitrage.huobi.util.HuobiConstants.HISTORY_SUFFIX;
-import static com.coin.arbitrage.huobi.util.HuobiConstants.RECORD_COUNT;
-import static com.coin.arbitrage.huobi.util.HuobiConstants._1_MINUTE;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +12,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import com.coin.arbitrage.huobi.domain.HistoryDetails;
+import com.coin.arbitrage.huobi.domain.Kline;
+import com.coin.arbitrage.huobi.domain.Response;
 
 
 @SpringBootApplication
@@ -41,9 +35,10 @@ public class HuobiAPIGeneral {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			HistoryDetails details = restTemplate.getForObject(
-					HISTORY_PREFIX + BTC + HISTORY_MIDDLE + _1_MINUTE + HISTORY_SUFFIX + RECORD_COUNT + "1" + "?Content-Type:application/json", HistoryDetails.class);
-			log.info(details.toString());
+			@SuppressWarnings("unchecked")
+			Response<Kline> response = restTemplate.getForObject(
+					"https://be.huobi.com/market/history/kline?period=1day&size=200&symbol=ethcny", Response.class);
+			log.info(response.toString());
 		};
 	}
 }
