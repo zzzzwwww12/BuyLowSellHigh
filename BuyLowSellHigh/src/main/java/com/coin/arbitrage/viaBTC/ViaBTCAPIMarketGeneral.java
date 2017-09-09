@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage;
+package com.coin.arbitrage.viaBTC;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import com.coin.arbitrage.domain.MarketResponse;
+import com.coin.arbitrage.viaBTC.domain.MarketResponse;
 
 
 @SpringBootApplication

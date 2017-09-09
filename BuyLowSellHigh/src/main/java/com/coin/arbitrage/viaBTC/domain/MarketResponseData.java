@@ -1,4 +1,4 @@
-package com.coin.arbitrage.domain;
+package com.coin.arbitrage.viaBTC.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

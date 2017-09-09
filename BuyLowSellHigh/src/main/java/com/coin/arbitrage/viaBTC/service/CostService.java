@@ -1,6 +1,6 @@
-package com.coin.arbitrage.service;
+package com.coin.arbitrage.viaBTC.service;
 
-import com.coin.arbitrage.service.impl.ICostService;
+import com.coin.arbitrage.viaBTC.service.impl.ICostService;
 /*BTC	0.20%	0.20%
 LTC	0.20%	0.20%
 BCC	0.20%	0.20%

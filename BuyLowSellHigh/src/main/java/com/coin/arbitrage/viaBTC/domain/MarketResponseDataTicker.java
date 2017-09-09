@@ -1,4 +1,4 @@
-package com.coin.arbitrage.domain;
+package com.coin.arbitrage.viaBTC.domain;
 
 public class MarketResponseDataTicker {
 	private String buy;
