@@ -1,9 +1,11 @@
-package com.coin.arbitrage.huobi.service;
+package com.coin.arbitrage.huobi.util;
 
 public enum CoinType {
 	ETHCNY("ethcny"),
 	ETCCNY("etccny"),
 	BCCCNY("bcccny"),
+	LTCCNY("ltccny"),
+	BTCCNY("btccny"),
 	ETHBTC("ethbtc"),
 	LTCBTC("ltcbtc"),
 	ETCBTC("etcbtc"),

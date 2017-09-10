@@ -3,42 +3,52 @@
  */
 package com.coin.arbitrage.huobi;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
+import com.coin.arbitrage.huobi.domain.Depth;
 import com.coin.arbitrage.huobi.domain.Kline;
-import com.coin.arbitrage.huobi.domain.Response;
+import com.coin.arbitrage.huobi.exception.HuoBiException;
+import com.coin.arbitrage.huobi.service.MarketDepthHelper;
+import com.coin.arbitrage.huobi.service.MarketHistoryKlineHelper;
+import com.coin.arbitrage.huobi.util.CoinType;
+import com.coin.arbitrage.huobi.util.DepthType;
+import com.coin.arbitrage.huobi.util.JsonUtil;
+import com.coin.arbitrage.huobi.util.KlinePeriod;
 
-
-@SpringBootApplication
 public class HuobiAPIGeneral {
+
+//	private static final String API_KEY = "";
+//	private static final String API_SECRET = "";
 
 	private static final Logger log = LoggerFactory.getLogger(HuobiAPIGeneral.class);
 
 	public static void main(String args[]) {
-		SpringApplication.run(HuobiAPIGeneral.class);
-		
-		System.out.println("All steps run complete");
+		try {
+			apiSample();
+		} catch (HuoBiException e) {
+			System.err.println("API Error! err-code: " + e.getErrCode() + ", err-msg: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
+	static void apiSample() {
+//		List<Kline> klines = MarketHistoryKlineHelper.getMarketHistoryKline(CoinType.ETHCNY, KlinePeriod.FIVE_MUNITE,10);
+//		log.info("market history is : " + klines);
+		
+		List<Depth> depths = MarketDepthHelper.getMarketDepth(CoinType.ETHCNY, DepthType.STEP1);
+		log.info("market depth is: " + depths);
 	}
 
-	@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			@SuppressWarnings("unchecked")
-			Response<Kline> response = restTemplate.getForObject(
-					"https://be.huobi.com/market/history/kline?period=1day&size=200&symbol=ethcny", Response.class);
-			log.info(response.toString());
-		};
+	public static void print(Object obj) {
+		try {
+			System.out.println(JsonUtil.writeValue(obj));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+
 }

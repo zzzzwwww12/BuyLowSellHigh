@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.service;
+package com.coin.arbitrage.huobi.util;
 
 /**
  * @author Frank
