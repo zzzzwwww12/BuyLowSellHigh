@@ -3,7 +3,9 @@
  */
 package com.coin.arbitrage.huobi.domain;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Frank
@@ -13,8 +15,10 @@ public class Depth {
 
 	private long id;
 	private long ts;
-	private ArrayList<Bid> bids;
-	private ArrayList<Ask> asks;
+
+	private BigDecimal[][] asks;
+	private BigDecimal[][] bids;
+
 	private long version;
 
 	public long getId() {
@@ -32,21 +36,23 @@ public class Depth {
 	public void setTs(long ts) {
 		this.ts = ts;
 	}
+	
 
-	public ArrayList<Bid> getBids() {
-		return bids;
-	}
 
-	public void setBids(ArrayList<Bid> bids) {
-		this.bids = bids;
-	}
-
-	public ArrayList<Ask> getAsks() {
+	public BigDecimal[][] getAsks() {
 		return asks;
 	}
 
-	public void setAsks(ArrayList<Ask> asks) {
+	public void setAsks(@JsonProperty("asks") BigDecimal[][] asks) {
 		this.asks = asks;
+	}
+
+	public BigDecimal[][] getBids() {
+		return bids;
+	}
+
+	public void setBids(@JsonProperty("asks") BigDecimal[][] bids) {
+		this.bids = bids;
 	}
 
 	public long getVersion() {

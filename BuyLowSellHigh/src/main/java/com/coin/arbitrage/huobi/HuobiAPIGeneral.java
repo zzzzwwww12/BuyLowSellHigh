@@ -36,8 +36,8 @@ public class HuobiAPIGeneral {
 	}
 	
 	static void apiSample() {
-//		List<Kline> klines = MarketHistoryKlineHelper.getMarketHistoryKline(CoinType.ETHCNY, KlinePeriod.FIVE_MUNITE,10);
-//		log.info("market history is : " + klines);
+		List<Kline> klines = MarketHistoryKlineHelper.getMarketHistoryKline(CoinType.ETHCNY, KlinePeriod.FIVE_MUNITE,10);
+		log.info("market history is : " + klines);
 		
 		List<Depth> depths = MarketDepthHelper.getMarketDepth(CoinType.ETHCNY, DepthType.STEP1);
 		log.info("market depth is: " + depths);
