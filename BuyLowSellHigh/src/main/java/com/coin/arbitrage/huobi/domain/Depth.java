@@ -36,8 +36,6 @@ public class Depth {
 	public void setTs(long ts) {
 		this.ts = ts;
 	}
-	
-
 
 	public BigDecimal[][] getAsks() {
 		return asks;
@@ -68,57 +66,4 @@ public class Depth {
 		return "Depth [id=" + id + ", ts=" + ts + ", bids=" + bids + "]";
 	}
 
-	public class Bid {
-		private double price;
-		private double amount;
-
-		public double getPrice() {
-			return price;
-		}
-
-		public void setPrice(double price) {
-			this.price = price;
-		}
-
-		public double getAmount() {
-			return amount;
-		}
-
-		public void setAmount(double amount) {
-			this.amount = amount;
-		}
-
-		@Override
-		public String toString() {
-			return "Bid [price=" + price + ", amount=" + amount + "]";
-		}
-
-	}
-
-	public class Ask {
-		private double price;
-		private double amount;
-
-		public double getPrice() {
-			return price;
-		}
-
-		public void setPrice(double price) {
-			this.price = price;
-		}
-
-		public double getAmount() {
-			return amount;
-		}
-
-		public void setAmount(double amount) {
-			this.amount = amount;
-		}
-
-		@Override
-		public String toString() {
-			return "Ask [price=" + price + ", amount=" + amount + "]";
-		}
-
-	}
 }
