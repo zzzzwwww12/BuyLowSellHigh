@@ -18,6 +18,7 @@ public class Response<T> {
 	private long ts;
 	private String ch;
 	private List<T> tick;
+	private List<T> data;
 
 	public String getStatus() {
 		return status;
@@ -66,10 +67,25 @@ public class Response<T> {
 	public void setTick(List<T> tick) {
 		this.tick = tick;
 	}
+	
+	public List<T> getData() {
+		return data;
+	}
+
+	public void setData(List<T> data) {
+		this.data = data;
+	}
 
 	public List<T> checkAndReturn() {
 		if ("ok".equals(status)) {
 			return tick;
+		}
+		throw new HuoBiException(errCode, errMsg);
+	}
+	
+	public List<T> checkAndReturnHistory() {
+		if ("ok".equals(status)) {
+			return data;
 		}
 		throw new HuoBiException(errCode, errMsg);
 	}

@@ -44,7 +44,7 @@ public class MarketHistoryKlineHelper extends BaseMarketHelper {
 						+ coinType.getCoinType(),
 				null, new TypeReference<Response<Kline>>() {
 				});
-		return resp.checkAndReturn();
+		return resp.checkAndReturnHistory();
 
 	}
 }
