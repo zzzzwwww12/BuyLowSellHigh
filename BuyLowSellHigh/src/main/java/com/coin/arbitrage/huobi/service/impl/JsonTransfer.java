@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,6 @@ import javax.xml.bind.DatatypeConverter;
 import com.coin.arbitrage.huobi.domain.ApiResponse;
 import com.coin.arbitrage.huobi.domain.ApiSignature;
 import com.coin.arbitrage.huobi.domain.CreateOrderRequest;
-import com.coin.arbitrage.huobi.domain.Kline;
 import com.coin.arbitrage.huobi.exception.HuoBiException;
 import com.coin.arbitrage.huobi.service.OkHttpClientHelper;
 import com.coin.arbitrage.huobi.util.JsonUtil;

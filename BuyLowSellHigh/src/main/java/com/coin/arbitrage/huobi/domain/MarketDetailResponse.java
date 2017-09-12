@@ -11,14 +11,13 @@ import com.coin.arbitrage.huobi.exception.HuoBiException;
  * @author Frank
  *
  */
-public class Response<T> {
+public class MarketDetailResponse {
 	private String status;
 	private String errCode;
 	private String errMsg;
 	private long ts;
 	private String ch;
-	private List<T> tick;
-	private List<T> data;
+	private List<MarketDetail> tick;
 
 	public String getStatus() {
 		return status;
@@ -26,22 +25,6 @@ public class Response<T> {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public long getTs() {
-		return ts;
-	}
-
-	public void setTs(long ts) {
-		this.ts = ts;
-	}
-
-	public String getCh() {
-		return ch;
-	}
-
-	public void setCh(String ch) {
-		this.ch = ch;
 	}
 
 	public String getErrCode() {
@@ -60,40 +43,41 @@ public class Response<T> {
 		this.errMsg = errMsg;
 	}
 
-	public List<T> getTick() {
+	public long getTs() {
+		return ts;
+	}
+
+	public void setTs(long ts) {
+		this.ts = ts;
+	}
+
+	public String getCh() {
+		return ch;
+	}
+
+	public void setCh(String ch) {
+		this.ch = ch;
+	}
+
+	public List<MarketDetail> getTick() {
 		return tick;
 	}
 
-	public void setTick(List<T> tick) {
+	public void setTick(List<MarketDetail> tick) {
 		this.tick = tick;
 	}
-	
-	public List<T> getData() {
-		return data;
-	}
 
-	public void setData(List<T> data) {
-		this.data = data;
-	}
-
-	public List<T> checkAndReturn() {
+	public List<MarketDetail> checkAndReturn() {
 		if ("ok".equals(status)) {
 			return tick;
-		}
-		throw new HuoBiException(errCode, errMsg);
-	}
-	
-	public List<T> checkAndReturnHistory() {
-		if ("ok".equals(status)) {
-			return data;
 		}
 		throw new HuoBiException(errCode, errMsg);
 	}
 
 	@Override
 	public String toString() {
-		return "Response [status=" + status + ", errCode=" + errCode + ", errMsg=" + errMsg + ", ts=" + ts + ", ch="
-				+ ch + ", tick=" + tick + "]";
+		return "MarketDetailResponse [status=" + status + ", errCode=" + errCode + ", errMsg=" + errMsg + ", ts=" + ts
+				+ ", ch=" + ch + ", tick=" + tick + "]";
 	}
 
 }

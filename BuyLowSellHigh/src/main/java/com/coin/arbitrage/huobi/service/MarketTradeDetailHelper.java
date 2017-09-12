@@ -9,19 +9,19 @@ import static com.coin.arbitrage.huobi.util.HuobiConstants.API_MARKET_URL2;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.coin.arbitrage.huobi.domain.Depth;
-import com.coin.arbitrage.huobi.domain.DepthResponse;
+import com.coin.arbitrage.huobi.domain.TradeDetail;
+import com.coin.arbitrage.huobi.domain.TradeDetailResponse;
 import com.coin.arbitrage.huobi.util.CoinType;
-import com.coin.arbitrage.huobi.util.DepthType;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 /**
  * @author Frank
  *
  */
-public class MarketDepthHelper extends BaseMarketHelper {
+public class MarketTradeDetailHelper extends BaseMarketHelper {
 
-	public static List<Depth> getMarketDepth(CoinType coinType, DepthType depthType) {
+	public static List<TradeDetail> getMarketTradeDetail(CoinType coinType) {
+		// CoinType validation
 		String hostURL = "";
 		if (isCNYBased(coinType)) {
 			hostURL = API_MARKET_URL;
@@ -31,10 +31,10 @@ public class MarketDepthHelper extends BaseMarketHelper {
 			return new ArrayList<>();
 		}
 
-		DepthResponse resp = get(hostURL + "/depth?symbol=" + coinType.getCoinType() + "&type=" + depthType.getDepth(),
-				null, new TypeReference<DepthResponse>() {
+		TradeDetailResponse resp = get(hostURL + "/trade?symbol=" + coinType.getCoinType(), null,
+				new TypeReference<TradeDetailResponse>() {
 				});
 		return resp.checkAndReturn();
-
 	}
+
 }

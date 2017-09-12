@@ -1,23 +1,16 @@
-/**
- * 
- */
 package com.coin.arbitrage.huobi.domain;
 
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Frank
- *
- */
 public class Depth {
 
 	private long id;
 	private long ts;
 
-	private BigDecimal[][] asks;
 	private BigDecimal[][] bids;
+	private BigDecimal[][] asks;
 
 	private long version;
 

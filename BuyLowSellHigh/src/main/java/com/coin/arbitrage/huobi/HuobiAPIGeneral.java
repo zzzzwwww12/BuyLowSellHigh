@@ -10,10 +10,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.coin.arbitrage.huobi.domain.Depth;
+import com.coin.arbitrage.huobi.domain.DetailMerged;
+import com.coin.arbitrage.huobi.domain.HistoryTradeDetail;
 import com.coin.arbitrage.huobi.domain.Kline;
+import com.coin.arbitrage.huobi.domain.MarketDetail;
+import com.coin.arbitrage.huobi.domain.TradeDetail;
 import com.coin.arbitrage.huobi.exception.HuoBiException;
 import com.coin.arbitrage.huobi.service.MarketDepthHelper;
+import com.coin.arbitrage.huobi.service.MarketDetailHelper;
+import com.coin.arbitrage.huobi.service.MarketDetailMergedHelper;
 import com.coin.arbitrage.huobi.service.MarketHistoryKlineHelper;
+import com.coin.arbitrage.huobi.service.MarketHistoryTradeDetailHelper;
+import com.coin.arbitrage.huobi.service.MarketTradeDetailHelper;
 import com.coin.arbitrage.huobi.util.CoinType;
 import com.coin.arbitrage.huobi.util.DepthType;
 import com.coin.arbitrage.huobi.util.JsonUtil;
@@ -41,6 +49,18 @@ public class HuobiAPIGeneral {
 		
 		List<Depth> depths = MarketDepthHelper.getMarketDepth(CoinType.ETHCNY, DepthType.STEP1);
 		log.info("market depth is: " + depths);
+		
+		List<DetailMerged> detailMergeds = MarketDetailMergedHelper.getMarketDetailMerged(CoinType.ETHCNY);
+		log.info("market detail merged is: " + detailMergeds);
+		
+		List<TradeDetail> tradeDetails = MarketTradeDetailHelper.getMarketTradeDetail(CoinType.ETHCNY);
+		log.info("market trade  detail  is: " + tradeDetails);
+		
+		List<HistoryTradeDetail> historyTradeDetails = MarketHistoryTradeDetailHelper.getMarketHistoryTradeDetail(CoinType.ETHCNY, 10);
+		log.info("market history trade detail is: " + historyTradeDetails);
+		
+		List<MarketDetail> marketDetails = MarketDetailHelper.getMarketDetail(CoinType.ETHCNY);
+		log.info("market detail is : " + marketDetails);
 	}
 
 	public static void print(Object obj) {

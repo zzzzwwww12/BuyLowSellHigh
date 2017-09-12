@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.coin.arbitrage.huobi.domain.Kline;
-import com.coin.arbitrage.huobi.domain.Response;
+import com.coin.arbitrage.huobi.domain.KlineResponse;
 import com.coin.arbitrage.huobi.util.CoinType;
 import com.coin.arbitrage.huobi.util.KlinePeriod;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -39,12 +39,10 @@ public class MarketHistoryKlineHelper extends BaseMarketHelper {
 			return new ArrayList<>();
 		}
 
-		Response<Kline> resp = get(
-				hostURL + "/history/kline?period=" + klinePeriod.getKlinePeriod() + "&size=" + size + "&symbol="
-						+ coinType.getCoinType(),
-				null, new TypeReference<Response<Kline>>() {
+		KlineResponse resp = get(hostURL + "/history/kline?period=" + klinePeriod.getKlinePeriod() + "&size=" + size
+				+ "&symbol=" + coinType.getCoinType(), null, new TypeReference<KlineResponse>() {
 				});
-		return resp.checkAndReturnHistory();
+		return resp.checkAndReturn();
 
 	}
 }
