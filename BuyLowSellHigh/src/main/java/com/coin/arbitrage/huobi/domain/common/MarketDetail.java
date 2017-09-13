@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.domain;
+package com.coin.arbitrage.huobi.domain.common;
 
 import java.math.BigDecimal;
 

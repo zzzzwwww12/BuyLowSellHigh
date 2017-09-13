@@ -1,4 +1,4 @@
-package com.coin.arbitrage.huobi.domain;
+package com.coin.arbitrage.huobi.domain.common;
 public class Kline {
 		private long id;
 		private double amount; // trading total price

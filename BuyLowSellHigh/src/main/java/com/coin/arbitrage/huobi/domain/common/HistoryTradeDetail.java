@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.domain;
+package com.coin.arbitrage.huobi.domain.common;
 
 import java.util.List;
 
@@ -9,11 +9,10 @@ import java.util.List;
  * @author Frank
  *
  */
-public class TradeDetail {
-
+public class HistoryTradeDetail {
 	private long id;
 	private long ts;
-	private List<TradeDetailMetaData> data;
+	private List<HistoryTradeDetailMetadata> data;
 
 	public long getId() {
 		return id;
@@ -31,17 +30,17 @@ public class TradeDetail {
 		this.ts = ts;
 	}
 
-	public List<TradeDetailMetaData> getData() {
+	public List<HistoryTradeDetailMetadata> getData() {
 		return data;
 	}
 
-	public void setData(List<TradeDetailMetaData> data) {
+	public void setData(List<HistoryTradeDetailMetadata> data) {
 		this.data = data;
 	}
 
 	@Override
 	public String toString() {
-		return "TradeDetail [id=" + id + ", ts=" + ts + ", data=" + data + "]";
+		return "HistoryTradeDetail [id=" + id + ", ts=" + ts + ", data=" + data + "]";
 	}
 
 }

@@ -16,9 +16,9 @@ import okhttp3.OkHttpClient.Builder;
  * @author Frank
  *
  */
-public class OkHttpClientHelper {
+public class HttpClientHelper {
 
-	public static OkHttpClient createOkHttpClient() {
+	public static OkHttpClient getInstance() {
 		return new Builder().connectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS).readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
 				.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS).build();
 	}

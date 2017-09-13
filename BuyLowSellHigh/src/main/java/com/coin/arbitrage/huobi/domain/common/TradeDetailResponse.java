@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.domain;
+package com.coin.arbitrage.huobi.domain.common;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import com.coin.arbitrage.huobi.exception.HuoBiException;
  * @author Frank
  *
  */
-public class HistoryTradeDetailResponse {
+public class TradeDetailResponse {
 
 	private String status;
 	private String errCode;
 	private String errMsg;
 	private long ts;
 	private String ch;
-	private List<HistoryTradeDetail> data;
+	private List<TradeDetail> tick;
 
 	public String getStatus() {
 		return status;
@@ -60,25 +60,25 @@ public class HistoryTradeDetailResponse {
 		this.ch = ch;
 	}
 
-	public List<HistoryTradeDetail> getData() {
-		return data;
+	public List<TradeDetail> getTick() {
+		return tick;
 	}
 
-	public void setData(List<HistoryTradeDetail> data) {
-		this.data = data;
-	}
-
-	public List<HistoryTradeDetail> checkAndReturn() {
-		if ("ok".equals(status)) {
-			return data;
-		}
-		throw new HuoBiException(errCode, errMsg);
+	public void setTick(List<TradeDetail> tick) {
+		this.tick = tick;
 	}
 
 	@Override
 	public String toString() {
-		return "HistoryTradeDetailResponse [status=" + status + ", errCode=" + errCode + ", errMsg=" + errMsg + ", ts="
-				+ ts + ", ch=" + ch + ", data=" + data + "]";
+		return "TradeDetailResponse [status=" + status + ", errCode=" + errCode + ", errMsg=" + errMsg + ", ts=" + ts
+				+ ", ch=" + ch + ", tick=" + tick + "]";
+	}
+
+	public List<TradeDetail> checkAndReturn() {
+		if ("ok".equals(status)) {
+			return tick;
+		}
+		throw new HuoBiException(errCode, errMsg);
 	}
 
 }

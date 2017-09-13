@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.domain;
+package com.coin.arbitrage.huobi.domain.common;
 
 import java.util.List;
 
@@ -11,13 +11,14 @@ import com.coin.arbitrage.huobi.exception.HuoBiException;
  * @author Frank
  *
  */
-public class KlineResponse {
+public class HistoryTradeDetailResponse {
+
 	private String status;
 	private String errCode;
 	private String errMsg;
 	private long ts;
 	private String ch;
-	private List<Kline> data;
+	private List<HistoryTradeDetail> data;
 
 	public String getStatus() {
 		return status;
@@ -25,22 +26,6 @@ public class KlineResponse {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public long getTs() {
-		return ts;
-	}
-
-	public void setTs(long ts) {
-		this.ts = ts;
-	}
-
-	public String getCh() {
-		return ch;
-	}
-
-	public void setCh(String ch) {
-		this.ch = ch;
 	}
 
 	public String getErrCode() {
@@ -59,15 +44,31 @@ public class KlineResponse {
 		this.errMsg = errMsg;
 	}
 
-	public List<Kline> getData() {
+	public long getTs() {
+		return ts;
+	}
+
+	public void setTs(long ts) {
+		this.ts = ts;
+	}
+
+	public String getCh() {
+		return ch;
+	}
+
+	public void setCh(String ch) {
+		this.ch = ch;
+	}
+
+	public List<HistoryTradeDetail> getData() {
 		return data;
 	}
 
-	public void setData(List<Kline> data) {
+	public void setData(List<HistoryTradeDetail> data) {
 		this.data = data;
 	}
 
-	public List<Kline> checkAndReturn() {
+	public List<HistoryTradeDetail> checkAndReturn() {
 		if ("ok".equals(status)) {
 			return data;
 		}
@@ -76,8 +77,8 @@ public class KlineResponse {
 
 	@Override
 	public String toString() {
-		return "KlineResponse [status=" + status + ", errCode=" + errCode + ", errMsg=" + errMsg + ", ts=" + ts
-				+ ", ch=" + ch + ", data=" + data + "]";
+		return "HistoryTradeDetailResponse [status=" + status + ", errCode=" + errCode + ", errMsg=" + errMsg + ", ts="
+				+ ts + ", ch=" + ch + ", data=" + data + "]";
 	}
 
 }

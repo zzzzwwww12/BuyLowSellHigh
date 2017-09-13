@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.domain;
+package com.coin.arbitrage.huobi.service.account;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * @author Frank
  *
  */
-public class ApiSignature {
+public class HuobiSignatureHelper {
 
 	final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -111,11 +111,11 @@ public class ApiSignature {
 	/**
 	 * Return epoch seconds
 	 */
-	long epochNow() {
+	private long epochNow() {
 		return Instant.now().getEpochSecond();
 	}
 
-	String gmtNow() {
+	private String gmtNow() {
 		return Instant.ofEpochSecond(epochNow()).atZone(ZONE_GMT).format(DT_FORMAT);
 	}
 

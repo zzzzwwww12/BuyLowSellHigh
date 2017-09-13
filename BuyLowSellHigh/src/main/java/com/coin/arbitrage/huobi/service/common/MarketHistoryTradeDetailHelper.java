@@ -1,16 +1,13 @@
 /**
  * 
  */
-package com.coin.arbitrage.huobi.service;
+package com.coin.arbitrage.huobi.service.common;
 
-import static com.coin.arbitrage.huobi.util.HuobiConstants.API_MARKET_URL;
-import static com.coin.arbitrage.huobi.util.HuobiConstants.API_MARKET_URL2;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import com.coin.arbitrage.huobi.domain.HistoryTradeDetail;
-import com.coin.arbitrage.huobi.domain.HistoryTradeDetailResponse;
+import com.coin.arbitrage.huobi.domain.common.HistoryTradeDetail;
+import com.coin.arbitrage.huobi.domain.common.HistoryTradeDetailResponse;
+import com.coin.arbitrage.huobi.service.BaseMarketHelper;
 import com.coin.arbitrage.huobi.util.CoinType;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -24,20 +21,13 @@ public class MarketHistoryTradeDetailHelper extends BaseMarketHelper {
 		return getMarketHistoryTradeDetail(coinType, 1);
 	}
 
-	//size is limited from 1-2000
+	// size is limited from 1-2000
 	public static List<HistoryTradeDetail> getMarketHistoryTradeDetail(CoinType coinType, int size) {
 		// CoinType validation
-		String hostURL = "";
-		if (isCNYBased(coinType)) {
-			hostURL = API_MARKET_URL;
-		} else if (isBTCBased(coinType)) {
-			hostURL = API_MARKET_URL2;
-		} else {
-			return new ArrayList<>();
-		}
+		String hostURL = getHostURL(coinType);
 
 		HistoryTradeDetailResponse resp = get(
-				hostURL + "/history/trade?symbol=" + coinType.getCoinType() + "&size=" + size, null,
+				hostURL + "/history/trade?symbol=" + coinType.getCoinType() + "&size=" + size,
 				new TypeReference<HistoryTradeDetailResponse>() {
 				});
 		return resp.checkAndReturn();
